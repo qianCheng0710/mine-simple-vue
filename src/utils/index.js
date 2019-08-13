@@ -77,24 +77,21 @@ export function loadCss(src) {
   });
 }
 // 对象取值
-export function getVal(obj, path, returnedVal = '') {
-  if (!path) {
+export function getVal(obj, path, returnedVal) {
+  if (path == null || obj == null) {
     return returnedVal;
   }
   const pathArr = path.split('.');
-  let current = obj;
+  let result = obj;
   for (let i = 0, l = pathArr.length; i < l; i++) {
-    if (!current) {
+    const prop = pathArr[i];
+    result = result[prop];
+    if (result == null) {
+      result = returnedVal
       break;
     }
-    const prop = pathArr[i];
-    current = current[prop];
   }
-  if (current || current === 0) {
-    return current;
-  } else {
-    return returnedVal;
-  }
+  return result;
 }
 // 冒泡排序
 export function bubbleSort(arr) {

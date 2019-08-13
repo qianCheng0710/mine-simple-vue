@@ -1,5 +1,5 @@
 
 // utils
-import _get from 'lodash/get';
+import { getVal } from '~utils';
 
-Vue.prototype.$val = _get;
+Vue.prototype.$val = getVal;
