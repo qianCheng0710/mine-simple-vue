@@ -1,17 +1,18 @@
 import axios from 'axios';
 import router from '../../router';
 import Cookie from 'js-cookie';
+import ELEMENT from 'element-ui';
 
 export const BASE_URL = process.env.VUE_APP_BASE_URL;
 
 export const loginService = axios.create({
-  timeout: 60000,
+  timeout: 30000,
   baseURL: BASE_URL,
   withCredentials: true
 });
 
 export const service = axios.create({
-  timeout: 60000,
+  timeout: 30000,
   baseURL: BASE_URL,
   withCredentials: true
 });
@@ -24,7 +25,7 @@ service.interceptors.request.use(
     if (config.getUrl) {
       config.url = config.getUrl(config.url);
     }
-    const token = Cookie.get('access_token') || null;
+    const token = localStorage.getItem('access_token') || null;
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
     }
@@ -50,10 +51,20 @@ service.interceptors.response.use(
     switch (status) {
       case 401:
         // 无权限
+        localStorage.removeItem('access_token');
+        setTimeout(() => {
+          router.replace({
+            path: '/login',
+            query: {
+              redirect: router.currentRoute.fullPath
+            }
+          });
+        }, 600);
+        ELEMENT.Message.error('身份过期，请重新登录');
         break;
       case 403:
         // 登录信息过期，请重新登录
-        Cookie.remove('access_token');
+        localStorage.removeItem('access_token');
         setTimeout(() => {
           router.replace({
             path: '/login',

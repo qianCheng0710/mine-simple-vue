@@ -6,7 +6,7 @@ const externals = {
   'vuex': 'Vuex',
   'axios': 'axios',
   'echarts': 'echarts'
-}
+};
 
 const cdn = {
   dev: {
@@ -38,7 +38,7 @@ const aliasMap = {
   '~store': 'src/store'
 };
 
-function resolve(dir) {
+function resolve (dir) {
   return path.join(__dirname, dir);
 }
 
@@ -53,7 +53,8 @@ module.exports = {
     // open: true,
     proxy: {
       '/url': {
-        target: 'http://115.236.68.205:8080/',
+        // target: 'http://115.236.68.205:8080/',
+        target: 'http://www.huangn.cn/',
         changeOrigin: true,
         ws: true,
         pathRewrite: {
@@ -65,9 +66,11 @@ module.exports = {
   css: {
     loaderOptions: {
       sass: {
-        data:  `
-          @import "@/style/theme.scss";
-        `
+        data: '\n          @import "@/style/theme.scss";\n        '
+      },
+      stylus: {
+        'resolve url': true,
+        'import': []
       }
     }
   },
@@ -100,7 +103,11 @@ module.exports = {
   },
   pluginOptions: {
     webpackBundleAnalyzer: {
-      openAnalyzer: true
+      openAnalyzer: false
+    },
+    'cube-ui': {
+      postCompile: false,
+      theme: false
     }
   }
-}
+};

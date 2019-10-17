@@ -10,7 +10,7 @@
       <link href="<%= htmlWebpackPlugin.options.cdn.css[i] %>" rel="preload" as="style">
       <link href="<%= htmlWebpackPlugin.options.cdn.css[i] %>" rel="stylesheet">
     <% } %>
-    <title>simple-vue-webpack</title>
+    <title>黄南水库</title>
   </head>
   <body>
     <noscript>
@@ -23,4 +23,26 @@
     <% } %>
     <!-- built files will be auto injected -->
   </body>
+  <script type="text/javascript">
+      document.addEventListener('plusready', function(a) { //等待plus ready后再调用5+ API：
+          //// 在这里调用5+ API
+          var first = null;
+          plus.key.addEventListener('backbutton', function() { //监听返回键
+              //首次按键，提示‘再按一次退出应用’
+              if (!first) {
+                  first = new Date().getTime(); //获取第一次点击的时间戳
+                  if(window.location.href.indexOf("login") < 0) {
+                      window.history.back(-1);
+                  }else {
+                      plus.nativeUI.toast("再次按返回键退出应用", {duration:'short'}); //通过H5+ API 调用Android 上的toast 提示框
+                  }
+                  setTimeout(function() {
+                      first = null;
+                  }, 1000);
+              } else {
+                  plus.runtime.quit(); //退出应用
+              }
+          }, false);
+      });
+  </script>
 </html>

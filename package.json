@@ -12,12 +12,24 @@
   },
   "dependencies": {
     "axios": "^0.19.0",
+    "chimee": "^0.11.0",
+    "chimee-kernel-hls": "^1.3.2",
+    "chimee-mobile-player": "^0.2.8",
+    "chimee-plugin-mobile-controlbar": "^0.1.4",
     "core-js": "^2.6.5",
+    "css-loader": "^3.2.0",
+    "cube-ui": "~1.12.15",
     "echarts": "^4.2.1",
+    "element-ui": "^2.12.0",
+    "hls.js": "^0.9.1",
+    "jsog": "^1.0.7",
     "js-cookie": "^2.2.1",
     "lodash": "^4.17.15",
+    "pdfjs-dist": "^2.1.266",
     "register-service-worker": "^1.6.2",
+    "videojs-contrib-hls": "^5.15.0",
     "vue": "^2.6.10",
+    "vue-echarts": "^3.1.3",
     "vue-router": "^3.0.3",
     "vuex": "^3.0.1"
   },
@@ -35,7 +47,23 @@
     "eslint-plugin-vue": "^5.0.0",
     "node-sass": "^4.9.0",
     "sass-loader": "^7.1.0",
+    "stylus": "^0.54.5",
+    "stylus-loader": "^3.0.2",
+    "vue-cli-plugin-cube-ui": "^0.2.5",
     "vue-cli-plugin-webpack-bundle-analyzer": "^1.4.0",
     "vue-template-compiler": "^2.6.10"
+  },
+  "transformModules": {
+    "cube-ui": {
+      "transform": "cube-ui/lib/${member}",
+      "kebabCase": true,
+      "style": {
+        "ignore": [
+          "create-api",
+          "better-scroll",
+          "locale"
+        ]
+      }
+    }
   }
 }
