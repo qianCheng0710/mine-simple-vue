@@ -24,7 +24,7 @@
   export default {
     data() {
       return {
-        username: '钱老板',
+        username: '黄南水库项目部',
         list: [[
           {
             name: '视频监控',
