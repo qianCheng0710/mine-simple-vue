@@ -1,7 +1,7 @@
 <template>
   <div class="index">
     <div class="full-width text-center height-310 text-18" style="color: white;background: url('img/hnLogin.png') no-repeat;background-size: 100% 100%">
-      <img src="img/hnLogo.png" class="mt-13" width="82px" alt="">
+      <img src="img/hnLogo1.png" class="mt-13" width="82px" alt="">
       <p class="mt-3 font-weight-bold">松阳县黄南水库工程</p>
       <p class="mt-1 font-weight-bold">智慧施工一体化平台</p>
     </div>
